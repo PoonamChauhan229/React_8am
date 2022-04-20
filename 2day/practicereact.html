@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./react.development.js"></script>
+    <script src="./babel.min.js"></script>
+    <script src="./react-dom.development.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Shiv(props) {
+            return <div>Hi,{props.name}{props.mname}{props.lname} {props.mname}</div>
+        }
+        function Players(props) {
+            return <div>Hi, I am {props.name} and i am from {props.location} and plays for {props.country}</div>
+        }
+        function App() {
+            return <div>
+                <h1>Hello, functional components passing props</h1>
+                <div>
+                    <Shiv name='Shivam' mname='Omprakash' lname='Chauhan' />
+                    <Shiv name='Chauhan' />
+                    <Shiv mname='OP' />
+                    <Shiv />
+                </div>
+                
+                <div>
+                    <Players name='Dhoni' location='Ranchi'country='India'/>
+                    <Players name='Sachin' location='Mumbai'country='India'/>
+                    <Players name='Kohli' location='Delhi' country='India'/>
+                </div>
+
+            </div>
+        }
+        //get container
+        var root = ReactDOM.createRoot(document.getElementById('root'))
+        // render content inside container
+        root.render(<App></App>)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj={
+
+        }
+        console.log(obj)
+        //insert
+        obj.name='Poonam'
+        console.log(obj)
+        //insert
+        obj.salary='50000'
+        console.log(obj)
+        //insert with space in key value
+        obj['full name']='Poonam Chauhan'
+        console.log(obj)
+        //insert
+        obj['address']='Bhandup'
+        console.log(obj)
+        //insert an array
+        obj.friends=['x','y','u','p']
+        console.log(obj)
+
+        //update the value
+        obj.salary='67000'
+        console.log(obj)
+        //update
+        obj['full name']='poonam chauhan'
+        console.log(obj)
+        //if m trying to update without a key value, then it will insert the data
+        obj.school='cosmos'
+        console.log(obj)
+
+        //delete the property
+        delete obj.salary;
+        console.log(obj)
+        //delete
+        delete obj.address;
+        console.log(obj)
+
+        //inside the object, if any property is available or not
+        console.log(obj.hasOwnProperty('location'))//false
+        console.log(obj.hasOwnProperty('address'))//false
+        console.log(obj.hasOwnProperty('school'))//true
+
+        //retrieve the data
+        console.log(obj.address)//undefined
+        console.log(obj.school)
+
+        //how many keys there along with the count in thr form of array
+        //key method returns an array of keys
+        console.log(Object.keys(obj))
+
+        //how to print a indivdual key
+        var totalkeys=Object.keys(obj)
+        console.log(totalkeys[0])
+
+        //what if there are 100 of keys how to fetch that
+        for(i=1;i<totalkeys.length;i++){
+            //console.log(totalkeys[i])
+            console.log( totalkeys[i] +"-"+obj[totalkeys[i]])
+        }
+        // totalkeys.forEach((element,index)=>{console.log(`${element} - ${index}`)})
+        
+       
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        var obj={}
+        console.log(obj)
+        //insert
+        obj.name="Poonam"
+        console.log(obj)
+        obj['full name']='Poonam Chauhan'
+        obj['school']='cosmos'
+
+        console.log(obj)
+
+        //update
+        obj['full name']='Poonam Omprakash Chauhan'
+        console.log(obj)
+        //if no key then instead of updating it will insert the data
+        obj.job='guvi'
+        console.log(obj)
+
+        //delete
+        delete obj.name
+        console.log(obj)
+
+        //retrive
+        console.log(obj['full name'])
+        console.log(obj['dance'])
+
+        
+        //if want to check, if its has own property is avaible or not
+        console.log(obj.hasOwnProperty('location'))
+        console.log(obj.hasOwnProperty('full name'))
+
+        //how many keys available with key name
+        console.log(Object.keys(obj))
+
+        var totalKeys=Object.keys(obj)
+        console.log(totalKeys.length)
+
+        for(i=0;i<totalKeys.length;i++){
+            // console.log(totalKeys[i])
+            var k=totalKeys[i]
+            console.log( totalKeys[i]+"-"+obj[totalKeys[i]])
+            // console.log(k)
+            // console.log(k +" "+obj[k])
+            
+        }
+    </script>
+</body>
+</html>
