@@ -1,0 +1,26 @@
+<script src="./react.development.js"></script>
+<script src="./babel.min.js"></script>
+<script src="./react-dom.development.js"></script>
+<div id="root"></div>
+
+
+<script type="text/babel">
+
+    function Player(props){
+        return<div>
+            
+            <h1>Hi, I am {props.name} and I am from {props.location} {props['children']}</h1>
+            </div>
+    }
+    function App(){
+        return <div>
+                <Player name="Sachin" location="Mumbai"/>
+                <Player name="Dhoni" location="Ranchi"/>
+                <Player name="Kohli" location="Delhi"/>
+                <Player name="John">JohnPur,NIT</Player>
+            </div>
+    }
+    var container = document.getElementById('root')
+        var root = ReactDOM.createRoot(container)
+        root.render(<App />)
+</script>
