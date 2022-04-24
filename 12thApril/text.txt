@@ -1,0 +1,156 @@
+________________________________________
+Adding 2 no's
+
+2-textbox
+1-button(sum)
+if sum>100:red and less than<100:blue
+____________________________________
+Follow the steps:
+Prepare template(functional component)-Camelcase
+How to handle events in React(Click event)
+How to take the data from input control(textbox)
+Render content dynamically 
+apply styles dynamically 
+
+************
+If we want to check how many events are there in JS, then go in console and type -on
+REact always expects a Method not an Method Call
+************
+
+---Till  7 JS complete
+
+Fetch the values in JS
+document.getElementByTagName('input)
+>>HTML Collection(2)[input,input]
+
+document.getElementByTagName('input)[0]
+>><input>
+
+document.getElementByTagName('input)[1]
+>><input>
+
+document.getElementByTagName('input)[0].value
+>>"2"
+
+document.getElementByTagName('input)[1].value
+>>"3"
+
+document.getElementByTagName('input)[0].value+document.getElementByTagName('input)[1].value
+>>"23"
+
+*****
+Input control retutn the value in string format
++concate
+*****
+
+Need to parse the stringify to Number
+-Number
+
+Number(document.getElementByTagName('input)[0].value+document.getElementByTagName('input)[1].value)
+>>5
+
+Otherway to to parse the stringify to Number
+-parseInt
+
+Difference between Number And parseInt
+var n1="123"
+
+Number(n1)
+>>123
+
+parseInt(n1)
+>>123
+
+If,
+var n2="1234errr"
+
+Number(n2)
+>>NAN
+
+parseInt(n2)
+>>123
+
+Number
+-Number always check whole input as Number
+-Strictly check, we need to go with number
+
+parseInt
+-parseInt check characterwise,whenever he finds the alphabet , remaining all alphabets are ignored and retrns the current value
+-partial check, we need to go with parseInt
+
+parseInt("1z343")
+>>1
+
+parseInt("a1233")
+>>NAN
+
+
+____________________________________
+2 Types of Components
+-functional
+-class
+
+functional
+-before 16.8 version
+-Dumb components
+-Static contentscomponents
+
+class
+-before 16.8 version
+-Static content as well as dynamic content
+
+-after 16.8 version
+React Intoduced Concepts as Hooks
+whatever we can do in class components, we can do in Functional components with the helps of hooks
+whatever drawbacks in funtional components,with the new version 
+
+Hooks
+--With 18.0 version
+--Functional Components
+1.useState
+2.useEffect
+3.useRef
+4.useMemo
+5.useCallback
+6.useContext
+7.useReducer
+
+
+useState and useRef, in This EXAMPLE
+
+useRef
+-Empty Reference, useRef
+-Always returns object
+-Hooks
+-Hook Type Function
+
+Aaray Destructing
+var [a,b]=[10,20]
+a
+>>10
+
+b
+>>20
+
+function f1(){
+    var n1=10;
+    var f=function(){
+        console.log("f1 called")
+    }
+}
+f1()
+>>[10,f]
+
+const [x,y]=f1()
+
+x
+>>10
+
+y
+>>f
+
+useState
+const [state,setState]=useState(100)
+
+
+
