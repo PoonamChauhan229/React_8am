@@ -1,0 +1,37 @@
+<script src="./react.development.js"></script>
+<script src="./babel.min.js"></script>
+<script src="./react-dom.development.js"></script>
+<div id="root"></div>
+
+<!-- sum -->
+<script type="text/babel">
+
+
+
+    function App() {
+        var n1ref = React.useRef()
+        var n2ref=React.useRef()
+        // var result=0;
+        const [result,setResult]=React.useState(0)
+        function findsum(){
+            console.log(n1ref.current.value)
+            console.log(n2ref.current.value)
+            var n1=n1ref.current.value;
+            var n2=n2ref.current.value
+            console.log(parseInt(n1)+parseInt(n2))
+            var result=parseInt(n1)+parseInt(n2);
+            setResult(result)
+        }
+        return <div>
+            <b>No1</b><input ref={n1ref} /><br />
+
+            <b>No2</b><input ref={n2ref}/><br />
+
+            <input type="submit" onClick={findsum}value='Submit' />
+            <h1>{result}</h1>
+        </div>
+    }
+    var container = document.getElementById('root')
+    var root = ReactDOM.createRoot(container)
+    root.render(<App />)
+</script>

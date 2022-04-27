@@ -1,0 +1,238 @@
+functional
+in jS we use document.getElementByID etc
+
+useRef:
+myRef=useRef()
+get the empty reference currently pointing to null
+
+myRef={
+    current=null
+}
+
+<div ref={myRef}></div>
+
+pointing to div element
+
+myRef={
+    current=div element
+}
+
+myRef.current.value
+
+
+useState
+
+it takes 1 aragument-ie. initial data
+so useState returns the array with 2 elements
+so we use destructure method
+the 1st variable-is the one which holds the initials data
+the 2nd is the funstion which sets the value in future 
+
+why const?
+we are not person to chnage the value, some other will chnage
+
+so who is that person to change the value; second element is the person
+second element is the function
+give that data, which data , the data wi=hich needs to be updated
+
+how can we do  that
+pass the data as an argument to the second element ie; to the function while calling
+
+this second element ie.e function will update the data in the 1st element
+
+and we can use the 1st element to print our updated data
+
+___________________________
+Apply Styles
+1.style attribute
+2.class 
+
+inline class
+
+hard coded
+style={{color:"red"}}
+
+but if we dont want hard coded then
+
+var clr=""
+
+style={{color:clr}}
+
+const [clr,setClr]=useState(0)
+
+1st time if we want to render but chnage also it should refelect
+so we should go with useState
+
+_______________________________________
+
+class components
+
+OOPs in Javascript
+
+
+in JS, normal function also can act like an class
+function f1(){
+
+}
+<f1/>//component
+<f1></f1>component
+new f1()//object, acting like an class
+
+How many ways we can create a class in JS
+
+1.using function||functional class
+2.using class keyword
+
+why we go for class?
+
+we want to represent some data 
+
+fw=2//variable for bus
+bw=2//variable for bus
+
+//method for bus
+totalwheel(){
+    return fw+bw
+}
+
+//method for bus
+getColor(){
+    return 'red'
+}
+
+
+Above all method and variable represent bus, why we need to write outside
+can we wrap up in a single entity, ie in class
+so we need to create a class variable
+so we can now write as
+
+class Bus{
+    fw=2//variable for bus
+    bw=2//variable for bus
+
+    //method for bus
+    totalwheel(){
+        return fw+bw
+    }
+
+    //method for bus
+    getColor(){
+        return 'red'
+    }   
+}
+
+So we can define, our class is a collection of variable and methods
+
+Now,
+
+function f1(){
+    console.log("f1 called")
+}
+f1()
+
+//can i call like this----NO
+getColor()
+
+why we we see above function f1 , its not inside the class wheras getColor is inside the class
+so object is required
+so we need to create object of the class
+
+var o=new Bus()
+0.getColor()
+
+****************
+Diff between function and methods
+Function we can directly call it but methods we can call by using an ojecr
+**********************
+
+1.using function||functional class
+
+
+function Bus(){
+    this.fw=2;
+    this.bw=4;
+    this.totalwheel=function(){
+        console.log("called")
+    }
+}
+//if you directly acces fw, bw , throes an error
+so ....
+var obj=new Bus()
+
+obj
+>>Bus {fw: 2, bw: 4, totalwheel: ƒ}
+//dot notation
+obj.fw
+>>2
+
+2.using class keyword
+
+class Bus{
+    fw=2
+    bw=4
+    totalwheel(){
+        console.log("called")
+    }
+}
+var nwobj=new Bus()
+
+nwobj.fw
+>>2
+
+nwobj.totalwheel()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

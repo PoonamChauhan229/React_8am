@@ -9,7 +9,7 @@
     function Player(props){
         return<div>
             
-            <h1>Hi, I am {props.name} and I am from {props.location} {props['children']}</h1>
+            <h1>Hi, I am {props.name} and I am from {props.location} {props['children']} {props.loc}</h1>
             </div>
     }
     function App(){
@@ -17,6 +17,7 @@
                 <Player name="Sachin" location="Mumbai"/>
                 <Player name="Dhoni" location="Ranchi"/>
                 <Player name="Kohli" location="Delhi"/>
+                <Player name="Poonam" location="Lucknow" loc="NewLucknow"/>
                 <Player name="John">JohnPur,NIT</Player>
             </div>
     }
