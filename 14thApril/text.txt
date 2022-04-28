@@ -138,11 +138,11 @@ so object is required
 so we need to create object of the class
 
 var o=new Bus()
-0.getColor()
+o.getColor()
 
 ****************
 Diff between function and methods
-Function we can directly call it but methods we can call by using an ojecr
+Function we can directly call it but methods we can call by using an oject
 **********************
 
 1.using function||functional class

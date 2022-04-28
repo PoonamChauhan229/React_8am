@@ -1,0 +1,381 @@
+2 ways
+
+Function
+
+by using this method
+
+function Bus(){
+    this.fw=2;
+    this.bw=2;
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+    this.printWheels=function(){
+       this.totalwheel() 
+    }
+
+}
+var obj=new Bus()
+console.log(obj.fw)
+console.log(obj.totalwheel())
+console.log(obj.printWheels())
+
+*********
+Any method , if we are using inside the class we will have to use this keyword
+*********
+
+class Bus{
+    fw=2;
+    bw=5;
+    totalwheel(){
+        console.log(fw+bw)//Reference error
+    }
+}
+var obj1=new Bus()
+obj1.totalwheel()//Reference error
+
+********
+Inside the class , if you want to call any class member by using current class object ie. this
+
+**********
+
+
+class Bus{
+    fw=2;
+    bw=5;
+    totalwheel(){
+        console.log(this.fw+this.bw)
+}
+}
+var obj1=new Bus();
+obj1.totalwheel()
+
+
+Question:
+function Bus(){
+    this.fw=2;
+
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+   
+}
+var obj=new Bus()
+console.log(obj.fw)
+console.log(obj.totalwheel())
+
+obj={
+    fw=2,
+    totalwheel:function(){
+                console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+}
+obj.fw//2
+obj.bw//undefined
+obj.totalwheel//2+undefined>>NAN
+
+
+undefined+2
+>>NAN
+
+undefined+undefined
+>>NAN
+
+null+undefined
+>>NAN
+
+null+2
+2
+
+null+null
+0
+
+true+true
+>>2
+
+true+false
+>>1
+
+false+null
+>>0
+
+false+undefined
+>>NAN
+
+___________________________
+
+function Bus(){
+    this.fw=2;
+
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+   
+}
+var obj=new Bus()
+console.log(obj.totalwheel())
+output-NAN
+but i want an output as 6
+
+so that means i need 4 value from outside
+so how can we do that
+
+HOW SOME CLASS GETS SOME VALUE/MEMBER FROM OUTSIDE?
+we have one concept in OOPS ie. inheritance
+
+By using inheritance , one class can get member from outside
+
+so we want ton inherit one member inside functional class
+we have one property prototype 
+
+************
+prototype is the property and by using this can we inherit the members
+***************
+
+function Bus(){
+    this.fw=2;
+
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+   
+}
+Bus.prototype.bw=4;
+var obj=new Bus()
+console.log(obj.totalwheel())
+
+Now , bw variable , with this value inherited into 1st class forom outside
+and now we have 3 members
+
+if i want to check now obj
+
+obj
+>>Bus {fw: 2, totalwheel: ƒ}
+here , bw not displaying
+then how can we get that bw
+
+Bus.prototype
+>>{bw: 4, constructor: ƒ}
+
+And, extra onw more member is there, ie, constructor
+we will constructor later
+
+Question:
+function Bus(){
+    this.fw=2;
+
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+   
+}
+Bus.prototype.bw=4;
+var obj=new Bus()
+console.log(obj.getColor())
+
+obj is there or not->YEs
+inside obj, getColor is there or not=>NO>> undefined
+
+Inside obj, if 1 property is not there then,
+undefined
+
+so can i use undefined value as a function
+is it possible==NO
+
+Any programming lang , if you c parathesis-()
+the prefix value should be what ?
+function
+
+obj.getColor is a function or undefined
+its undefined
+so undefined is afunction->NO
+so we get as error as
+undefined is not a function
+
+Error Message in console
+VM233:1 Uncaught TypeError: obj.getColor is not a function
+    at <anonymous>:1:5
+
+___________________________
+
+Now my requirement is what it should return a red color
+Question:
+function Bus(){
+    this.fw=2;
+
+    this.totalwheel=function(){
+        console.log(parseInt(this.fw)+parseInt(this.bw))
+    }
+   
+}
+Bus.prototype.bw=4;
+Bus.prototype.getColor=function(){
+    console.log("red")
+}
+var obj=new Bus()
+console.log(obj.getColor())
+___________________________
+
+Class keyword
+
+class Bus{
+    fw=2;
+    totalwheel(){
+        console.log(this.fw+this.bw)
+    }
+}
+var obj= new Bus()
+
+console.log(obj.totalwheel())//NAN>>2+undefined>>NAN
+
+Output should come>>6
+
+Bus.prototype.bw=4
+
+console.log(obj.totalwheel())
+>>6
+
+****prototype works for botth class and function
+
+Bus.prototype.getColor=function(){
+    console.log("red")
+}
+
+console.log(obj.getColor())
+>>red
+
+
+___________________________
+There is more method to inherit the members in the class
+ class A{
+     bw=4;
+ }
+ class Bus{
+     fw=2;
+     totalwheel(){
+         console.log(this.fw+this.bw)
+     }
+ }
+Here , class B required bw which is another class
+using extends  keyword , we can do
+ class A{
+     bw=4;
+     getColor(){
+         return "red";
+     }
+ }
+ class Bus extends A{
+     fw=2;
+     totalwheel(){
+         console.log(this.fw+this.bw)
+     }
+ }
+var obj= new Bus()
+
+console.log(obj.totalwheel())
+console.log(obj.getColor())
+
+
+************
+function A(){
+     this.bw=4;
+     this.getColor=function(){
+         return "red";
+     }
+ }
+ class Bus extends A{
+     fw=2;
+     totalwheel(){
+         console.log(this.fw+this.bw)
+     }
+ }
+var obj= new Bus()
+
+console.log(obj.totalwheel())
+console.log(obj.getColor())
+
+*****
+extends keyword works with both functional class and class keyword
+class keyword can only use the extends 
+*****
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
