@@ -1,0 +1,463 @@
+class (f,c)
+object
+inheritance
+
+___________________________
+Question:Error Messdage
+class A{
+    n1=1;
+    f1(){
+        console.log(n1)
+    }
+}
+var o=new A()
+o.f1()
+>>n1 is not defined(this.n1 should come)
+
+o.f2()
+>>o.f2 is not a function
+___________________________
+output>>
+o.f2()
+option1___________________________
+
+A.prototype.f2=function(){
+    console.log("f2 called")
+}
+
+
+option2________________________
+extends
+class B{
+    f2(){
+        console.log("f2 called")
+    }
+}
+class A extends B{
+    n1=1;
+    f1(){
+        console.log(this.n1)
+    }
+}
+var o=new A()
+o.f2()
+option3___________________________
+with functional class
+function B(){
+    this.f2=function(){
+        console.log("f2 called")
+    }
+}
+class A extends B{
+    n1=1;
+    f1(){
+        console.log(this.n1)
+    }
+}
+var o=new A()
+o.f1()
+o.f2()
+>>f2 called
+
+
+_______________________________________________
+constructor
+
+class A{
+
+}
+>>As a developer , we can say there is no member
+but there is 1 member by default inherited in the class
+-->constructor
+
+how can we see the inherited members
+A.prototype
+>>{constructor: ƒ}
+
+constructor is one type od function
+
+A.prototype.n1=10
+>>10
+
+A.prototype
+>>{n1: 10, constructor: ƒ}
+
+class A{
+    n1=10;
+    f1(){
+
+    }
+}
+A.prototype
+>>{constructor: ƒ, f1: ƒ}
+
+********
+Here whaterver the methods we have written inside the class those also create like a inherit member itself
+All the methods inside the class keyoword class they plays as a prototype method
+********
+
+function A(){
+    this.n1=10;
+    this.fi=function(){
+
+    }
+}
+A.prototype
+>>{constructor: ƒ}
+********
+method created in functional class is not treated as prototype
+********
+
+
+********
+whether its a class or functional class by default we will have constructor in it
+*********
+
+constructor
+TYpe of constructor-function
+
+if its inside the class
+-constructor is a method
+
+when constructor is going to call
+whenever you create a object of the class, constructor is called
+
+
+Functional class
+
+function A(){
+    this.n1=10;
+    this.f1=function(){
+
+    }
+}
+
+A.prototype
+>>{constructor: ƒ}constructor: ƒ A()[[Prototype]]: Object
+
+if you observe,c my constructor is a function , which function- A()
+that means here A is acting like a class as well the constructor
+
+so this type of classess we can say as constructor class in javascript
+
+can we check it that A is called or not can we put a debugger
+
+by using debugger; we can do it
+function A(){
+    debugger;
+    this.n1=10;
+    this.n2=20;
+}
+var obj=new A()
+
+"this" is pointing to the current object class
+obj
+A {n1: 10, n2: 20}
+
+inside the class we can represent object by using "this"
+outside the class we can represent object by using obj
+
+At the time creating the object, which method is called , ie constructor
+
+Is constructor mandatory?
+because as a developer  it is optional to you
+
+it is already injected to the class
+so constructor is mandatory, if dont write, default constructor is going to be called
+
+What constructor is going to do/functiomality? Default constructor
+var obj=new A()
+->constructor allocates the memory for the variable in the class and performs initilization
+->constructor is going to execute , at the time of creating of the object
+->new operator is going to allocate the memory to A class
+->obj is the Reference which is pointing to this object
+-> while creating an object , constructor is going to execute so
+inside this particular class , how many variables are there 1 st its going to find
+function A(){
+    debugger;
+    this.n1=10;
+    this.n2=20;
+}
+var obj=new A()
+
+
+class B{
+    n2=20
+}
+class A extends B{
+    n1=10;
+    sum(){
+        console.log(this.n1+this.n2)
+    }
+}
+var obj =new A()
+Here, this.n1 and this.n2 , 2 variables we have
+->Its going to allocate the memory for that particular variable
+and refer that memory with the variable names
+n1 and n2
+-->performs initilization , initilization means allocating the memmory
+assign the value to n1 and to n2
+n1=10
+n2=20
+->Is A class is inherited from any other class, FInd inherited class
+Yes: if Yes,it calls inherited class constructor
+    :it is going to allocate the memory and perform initilization
+    No:No No issue
+
+_______________________________________________
+
+if we write constructor expilicitly
+then default constructor work has to be taken care by use
+HOW?
+
+class B{
+    n2=20
+}
+class A extends B{
+    n1=10;
+    constructor(){
+        console.log("Hwllo")
+    }
+    sum(){
+        console.log(this.n1+this.n2)
+    }
+}
+var obj=new A();
+>> Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+    at new A (<anonymous>:8:17)
+    at <anonymous>:1:9
+
+we have call super class constructor
+now onwards, if you write constructor inside the class
+if my class is inherited from some other class
+you are the responsible person to call your inherited class constructor
+
+class B{
+    n2=20
+}
+class A extends B{
+    n1=10;
+    constructor(){
+        super();
+        console.log("Hwllo")
+    }
+    sum(){
+        console.log(this.n1+this.n2)
+    }
+}
+var obj=new A()
+___________________________
+super()- should be the 1st executable statement
+
+Wrong way of writing
+
+class B{
+    n2=20
+}
+class A extends B{
+    n1=10;
+    constructor(){
+        this.name="Poonam"
+        super();
+    }
+    sum(){
+        console.log(this.n1+this.n2)
+    }
+}
+var obj=new A()
+>>Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+    at new A (<anonymous>:7:9)
+    at <anonymous>:14:9
+___________________________
+class component
+
+Below member are there in React.Component
+React.Component is a functional class
+
+props,refs,context, isReactComponet, setState,forceUpdate
+class App extends React.Component{
+}
+after this our class becomes React component
+
+
+Why we go for component
+-to prepare for content
+-Object is with React
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
